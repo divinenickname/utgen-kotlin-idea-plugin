@@ -23,51 +23,41 @@ Based on [UTGen library](https://github.com/divinenickname/utgen-kotlin-core).
 
 Your source class is:
 ```kotlin
-package io.github.divinenickname.kotlin.utgen.core
+package com.example.demo1
 
-class TestClass {
+class MyTestClass(
+    private val a: String,
+    private val b: String,
+) {
 
-    fun voidMethod() {
-        println("VOID method")
-    }
-
-    fun nonVoidMethod(): String {
-        return "abcd"
-    }
-
-    public fun publicScopeMethod() {}
-
-    private fun privateMethod(int: Long): String {
-        return "private scope method"
+    fun testMethod(): MyRetObj {
+        return MyRetObj(true)
     }
 }
+```
+```kotlin
+data class MyRetObj(
+    val a: Boolean
+)
 ```
 
 Library generates code:
 ```kotlin
-package io.github.divinenickname.kotlin.utgen.core
+package com.example.demo1
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-internal class TestClassTest {
-  private val obj: TestClassTest = TestClass()
+internal class MyTestClassTest {
+    private val obj: MyTestClass = MyTestClass()
 
-  @Test
-  public fun voidMethod_goldencase() {
-    TODO("Implement")
-    val actual = obj.voidMethod()
-  }
+    @Test
+    public fun testMethod_goldencase() {
+        TODO("Implement")
+        val expected = MyRetObj()
+        val actual = obj.testMethod()
 
-  @Test
-  public fun nonVoidMethod_goldencase() {
-    TODO("Implement")
-    val actual = obj.nonVoidMethod()
-  }
-
-  @Test
-  public fun publicScopeMethod_goldencase() {
-    TODO("Implement")
-    val actual = obj.publicScopeMethod()
-  }
+        Assertions.assertEquals(expected, actual)
+    }
 }
 ```
