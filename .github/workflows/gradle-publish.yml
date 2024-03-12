@@ -1,4 +1,4 @@
-name: Publish to Maven Central
+name: Publish to JetBrains Marketplace
 
 on:
   release:
@@ -21,7 +21,7 @@ jobs:
           java-version: 17
           distribution: 'adopt'
 
-      - name: Publish
+      - name: Publish to JetBrains Marketplace
         env:
           GIT_TAG: ${{github.ref_name}}
           CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
