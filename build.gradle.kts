@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.divinenickname.kotlin.utgen:utgen-core:1.2.0")
+    implementation("io.github.divinenickname.kotlin.utgen:utgen-core:1.3.0")
 }
 
 // Configure Gradle IntelliJ Plugin
