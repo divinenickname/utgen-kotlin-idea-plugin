@@ -14,6 +14,7 @@ repositories {
 
 dependencies {
     implementation("io.github.divinenickname.kotlin.utgen:utgen-core:1.3.0")
+//    implementation(kotlin("reflect"))
 }
 
 // Configure Gradle IntelliJ Plugin
@@ -22,7 +23,12 @@ intellij {
     version.set("2023.1.6")
     type.set("IC") // Target IDE Platform
 
-    plugins.set(listOf(/* Plugin Dependencies */))
+    plugins.set(
+        listOf(
+            "com.intellij.java",
+            "org.jetbrains.kotlin"
+        )
+    )
 }
 
 tasks {
