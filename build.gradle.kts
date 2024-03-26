@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.divinenickname.kotlin.utgen:utgen-core:1.3.0")
+    implementation("io.github.divinenickname.kotlin.utgen:utgen-core:1.3.1")
 //    implementation(kotlin("reflect"))
 }
 
