@@ -6,6 +6,7 @@ import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VfsUtil
+import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiFileFactory
 import com.intellij.psi.PsiManager
@@ -31,8 +32,12 @@ class GenerateUnitTest : AnAction() {
             .plus("/src/test/kotlin/")
             .plus(code.relativePath).removeSuffix("/${code.name}.kt")
 
-        val directory = VfsUtil.createDirectoryIfMissing(basePath)!!
-        PsiManager.getInstance(project).findDirectory(directory)!!
+        var directory: VirtualFile? = null
+        ApplicationManager.getApplication().runWriteAction {
+            directory = VfsUtil.createDirectoryIfMissing(basePath)!!
+        }
+
+        PsiManager.getInstance(project).findDirectory(directory!!)!!
             .takeIf { it.findFile(psiFile.name) == null }
             ?.run {
                 ApplicationManager.getApplication().runWriteAction { this.add(psiFile) }
