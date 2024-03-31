@@ -60,4 +60,11 @@ class GenerateUnitTest : AnAction() {
 
         return psiFile
     }
+
+    override fun update(e: AnActionEvent) {
+        val presentation = e.presentation
+        val file = e.getData(CommonDataKeys.VIRTUAL_FILE)
+
+        presentation.isEnabledAndVisible = file?.extension == "kt"
+    }
 }
