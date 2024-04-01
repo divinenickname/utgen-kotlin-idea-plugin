@@ -1,5 +1,6 @@
 package io.github.divinenickname.kotlin.utgen.idea.plugin
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -21,6 +22,17 @@ import org.jetbrains.kotlin.psi.KtFunction
 import java.io.File
 
 class GenerateUnitTest : AnAction() {
+
+    /**
+     * EDT - Event Dispatch Thread. Used for responsible UI. [ActionUpdateThread.EDT]
+     *
+     * BGT - Background Thread. Used for long-running tasks or background processing. [ActionUpdateThread.BGT]
+     *
+     * @see [ActionUpdateThread] javadoc.
+     */
+    override fun getActionUpdateThread(): ActionUpdateThread {
+        return ActionUpdateThread.BGT
+    }
 
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: throw RuntimeException("Project must not be null. Critical failure.")
