@@ -13,7 +13,7 @@ import org.jetbrains.kotlin.psi.KtFunction
 /**
  * Default code formatter. Use it to remove trailing spaces, useless 'public' naming and other unnecessary things.
  */
-class KotlinCodeFormatter(private val project: Project, private val psiFile: PsiFile) {
+class KotlinCodeFormatter(private val codeStyleManager: CodeStyleManager, private val psiFile: PsiFile) {
 
     /**
      * Already wrapped with [WriteCommandAction.runWriteCommandAction] and
@@ -28,6 +28,6 @@ class KotlinCodeFormatter(private val project: Project, private val psiFile: Psi
             }
         }
 
-        CodeStyleManager.getInstance(project).reformat(psiFile)
+        codeStyleManager.reformat(psiFile)
     }
 }

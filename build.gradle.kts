@@ -13,8 +13,14 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.divinenickname.kotlin.utgen:utgen-core:1.3.1")
+    implementation("io.github.divinenickname.kotlin.utgen:utgen-core:1.3.2")
     implementation(kotlin("reflect"))
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.2")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.8.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
 }
 
 // Configure Gradle IntelliJ Plugin
@@ -55,4 +61,8 @@ tasks {
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
