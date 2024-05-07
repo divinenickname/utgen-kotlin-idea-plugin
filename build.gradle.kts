@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.divinenickname.kotlin.utgen:utgen-core:1.3.2")
+    implementation("io.github.divinenickname.kotlin.utgen:utgen-core:1.3.5")
     implementation(kotlin("reflect"))
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
